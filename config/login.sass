@@ -1,0 +1,267 @@
+@use "sass:math" /* import math functions */
+
+/* ==========================================================================
+	LoginScreen CSS
+	========================================================================== */
+.wallPaper
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: -5
+	background-position: center
+	background-repeat: no-repeat
+	background-size: cover
+
+.photoCredit
+	position: absolute
+	bottom: 16px
+	right: 16px
+	color: #fff
+	font-size: 12px
+
+// banner variables
+$banner-height: 72px
+$banner-font-size: 48px
+.banner
+	display: inline-block
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: $banner-height
+	color: #fff
+	font-family: "Roboto", sans-serif
+	font-size: $banner-font-size
+	line-height: $banner-font-size
+	font-weight: 300
+	text-shadow: 0 0px 4px rgba(0, 0, 0, 0.8)
+	padding-top: math.div($banner-height , 6)
+	padding-left: 24px
+	background-color: rgba(0, 0, 0, .15)
+	text-align: left
+
+
+// layout variables
+$top-space: $banner-height + 64px
+$line-width: 1px
+// used by form and layout box
+$input-height: 64px
+$options-ratio: math.div(5, 8)
+
+.login-Layout-main
+	margin-top: $top-space
+
+	.row.login-Layout_HeadRow
+		margin-bottom: 0
+		padding-bottom: 0
+		height: $line-width
+		text-align: center
+		.mainLogo img
+			margin-top: -56px
+			height: 120px
+
+	.row.login-Layout_SpaceRow
+		$spacer-height: 225px
+		height: $spacer-height
+		max-height: $spacer-height
+		.vertLine
+			// (Height of spacer) + (Height of input row * 2) + (margin for horizontal line) + (Height of options row)
+			height: $spacer-height + ($input-height * 2) + math.div($input-height, 2) + ($input-height * $options-ratio)
+			width: $line-width
+			background-color: #fff
+		.vertLine.float-right
+			float: right
+
+	.horzLine
+		height: $line-width
+		background-color: #fff
+		padding-left: 0
+		padding-right: 0
+
+	.login-Form_PasswordRow .horzLine
+		margin-top: math.div($input-height, 2)
+
+.login-Form
+	$input-font-size: 24px
+	$border-width: 1px
+	font-family: "Roboto", sans-serif
+
+	.login-Form_TextRow
+		height: ($input-height * 2)
+		max-height: ($input-height * 2)
+		.login-Form_TextBox
+			display: inline-flex
+			height: $input-height
+			background-color: rgba(0, 0, 0, .3)
+			border: $border-width solid #fff
+			color: #fff
+			font-size: $input-font-size
+			font-weight: 300
+			line-height: $input-height
+			letter-spacing: 1.5px
+			.flex-md-1:last-child i
+				padding-left: 8px
+				padding-right: 8px
+		.login-Form_TextBox:focus-within
+			// will not work in Internet Explorer
+			border: ($border-width * 2) solid #fff
+
+		.login-Form_Input
+			width: 100%
+			background-color: rgba(0, 0, 0, 0)
+			border: none
+			outline: none
+			color: #fff
+			height: $input-height - ($border-width * 2)
+			font-size: $input-font-size
+			font-weight: 300
+			line-height: $input-height
+			letter-spacing: 1.5px
+		.login-Form_Input::placeholder
+			color: #fff
+
+	// password row does not have margin underneath
+	.login-Form_TextRow.login-Form_PasswordRow
+		height: $input-height
+
+	.login-Form_OptionsRow
+		height: $input-height * $options-ratio
+		max-height: $input-height * $options-ratio
+		&.over
+			padding-top: math.div(($input-height * $options-ratio), 4)
+			.login-Form_OptionsBox
+				background-color: rgba(0, 0, 0, 0.3)
+				border-bottom: none
+				text-align: center
+		&.under
+			padding-bottom: math.div(($input-height * $options-ratio), 4)
+			.login-Form_OptionsBox
+				background-color: rgba(0, 0, 0, 0.5)
+				border-top: none
+
+		i.fa-google
+			color: #4285F4
+		i.fa-microsoft
+			color: #00A2ED
+
+		.login-Form_OptionsBox
+			$checkBox-height: math.div($input-height, 4)
+
+			border: $border-width solid #fff
+			background-color: rgba(0, 0, 0, 0.5)
+			color: #fff
+			font-size: $input-font-size * math.div(2, 3)
+			line-height: $input-font-size
+			font-weight: 300
+			text-shadow: 0 0px 4px rgba(0, 0, 0, 0.8)
+			vertical-align: middle
+
+			span
+				vertical-align: middle
+				// extra padding to properly center text vertically
+				padding-top: $border-width * 2
+
+			.login-Checkbox_Outline
+				height: $checkBox-height
+				width: $checkBox-height
+				max-height: $checkBox-height
+				max-width: $checkBox-height
+				border: $border-width solid #fff
+				background-color: rgba(255,255, 255, .25)
+				float: left
+				top: 8px
+				margin-top: 5px
+				margin-right: 8px
+			.login-Checkbox
+				height: $checkBox-height - ($border-width * 2)
+				width: $checkBox-height - ($border-width * 2)
+				max-height: $checkBox-height - ($border-width * 2)
+				max-width: $checkBox-height - ($border-width * 2)
+				color: black
+				background: rgba(40,40,40,0.1)
+				border: none
+				outline: none
+				-webkit-appearance: none
+				-moz-appearance: none
+				float: left
+				margin: 0px
+			.login-Checkbox:checked:after
+				color: #fff
+				content: "\2713"
+				font-size: $input-font-size * math.div(2, 3)
+				position: relative
+				top: -6px
+				left: 1px
+
+	.login-Form_Submit
+		border: none
+		outline: none
+		color: #fff
+		background-color: transparent
+		font-size: $input-font-size - ($border-width * 2)
+		padding: 0px
+
+
+#login-Modal_OAuth
+	.modal-header
+			color: #77787B
+	.modal-body
+		.btn
+			width: 80%
+			display: block
+			background-color: #F0F1F5
+			color: #77787B
+			text-decoration: none
+			&:nth-last-child(n+2)
+				margin-bottom: 12px
+			i.fa-google
+				color: #4285F4
+			i.fa-microsoft
+				color: #00A2ED
+	.modal-footer button
+		display: inline-block
+
+// TODO: clean up banner and error CSS below
+.forgotMe
+	float: right
+	margin-right: 24px
+	margin-top: -12px
+
+.forgotMe a, .forgotMe a:hover
+	color: #fff
+	font-size: 18px
+	line-height: 72px
+	font-weight: 400
+	text-shadow: 0 0px 4px rgba(0, 0, 0, 0.8)
+	background-color: transparent
+
+.loginMessage
+	position: absolute
+	top: 64px
+	left: 0
+	width: 100%
+	height: 32px
+	line-height: 32px
+	font-size: 16px
+	display: inline-block
+	z-index: 800
+
+.loginMessage .alert
+	font-size: 24px
+	padding-left: 24px
+	padding-right: 24px
+
+.loginAlert button, .loginNotice button
+	color: inherit
+	background: transparent no-repeat
+	border: none
+	cursor: pointer
+	overflow: hidden
+	outline: none
+	-webkit-box-shadow: none
+	-moz-box-shadow: none
+
+.loginMessage .alert .close
+	position: inherit
