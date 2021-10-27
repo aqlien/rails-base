@@ -1,24 +1,23 @@
-# README
+# Base App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is meant to be used as a template for an app with broader features. The idea is to pre-configure several gems and packages to accelerate development time.
+#### Basics
 
-Things you may want to cover:
+* Ruby 3.0.2
+* Rails 6.1.4
+  * Postgres
 
-* Ruby version
+#### Included via Gemfile
 
-* System dependencies
+#### Included via Yarn
+* [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+* [FontAwesome 5](https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free)
 
-* Configuration
+#### Other Configuration Settings
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Potential Future Inclusions
+* DataTables
+* Devise, User model
+* FactoryBot
+* HAML
+* RSpec
