@@ -8,15 +8,17 @@ This application is meant to be used as a template for an app with broader featu
   * Postgres
 
 #### Included via Gemfile
+* [CSS Bundling](https://github.com/rails/cssbundling-rails)/[JS Bundling](https://github.com/rails/jsbundling-rails) - futureproofing for Rails 7
 
 #### Included via Yarn
 * [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+* [DataTables](https://datatables.net/)
 * [FontAwesome 5](https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free)
+
 
 #### Other Configuration Settings
 
 ### Potential Future Inclusions
-* DataTables
 * Devise, User model
 * FactoryBot
 * HAML
