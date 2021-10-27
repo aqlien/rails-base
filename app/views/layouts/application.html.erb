@@ -7,7 +7,9 @@
     <%= csp_meta_tag %>
 
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= yield :javascripts %>
     <%= stylesheet_link_tag "application" %>
+    <%= yield :stylesheets %>
   </head>
 
   <body>
